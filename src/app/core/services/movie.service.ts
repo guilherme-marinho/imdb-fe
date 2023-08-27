@@ -8,7 +8,7 @@ import { api_url } from 'src/environments/environment';
 })
 export class MovieService {
   private readonly baseUrl: string;
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient) {
     this.baseUrl = api_url.base_url;
   }
 
