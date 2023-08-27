@@ -4,9 +4,8 @@ $accent-color: #3498db;
 $text-color: #333333;
 $button-color: #ffffff;
 $button-background-color: #3498db;
-$highlight-color: #e4e4e4; // Cor de destaque para o hover
+$highlight-color: #e4e4e4;
 
-// Importando a fonte Roboto do Google Fonts
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
 
 html,
@@ -23,8 +22,7 @@ body {
 }
 
 .welcome-content {
-  font-family: "Roboto", sans-serif; // Aplicando a fonte Roboto no container
-  display: flex;
+  font-family: "Roboto", sans-serif;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -35,9 +33,9 @@ body {
   transition: box-shadow 0.3s;
 
   .content-box {
-    font-family: "Roboto", sans-serif; // Aplicando a fonte Roboto na content-box
+    font-family: "Roboto", sans-serif;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s, background-color 0.3s; // Adiciona transição para a cor de fundo
+    transition: box-shadow 0.3s, background-color 0.3s;
     padding: 20px;
     border-radius: 10px;
     background-color: $box-background-color;
@@ -45,7 +43,7 @@ body {
 
     &:hover {
       box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-      background-color: $highlight-color; // Altera a cor de fundo ao passar o mouse
+      background-color: $highlight-color;
     }
 
     .imdb-logo {
@@ -56,20 +54,20 @@ body {
     }
 
     h1 {
-      font-family: "Roboto", sans-serif; // Aplicando a fonte Roboto no cabeçalho h1
+      font-family: "Roboto", sans-serif;
       margin-bottom: 20px;
       color: $text-color;
     }
 
     .description {
-      font-family: "Roboto", sans-serif; // Aplicando a fonte Roboto na descrição
+      font-family: "Roboto", sans-serif;
       margin-bottom: 30px;
       font-size: 18px;
       color: $text-color;
     }
 
     .btn-custom {
-      font-family: "Roboto", sans-serif; // Aplicando a fonte Roboto no botão
+      font-family: "Roboto", sans-serif;
       display: block;
       margin: 0 auto;
       background-color: $button-background-color;

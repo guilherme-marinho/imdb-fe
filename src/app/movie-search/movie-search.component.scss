@@ -141,14 +141,14 @@ body {
 
   .row {
     display: flex;
-    justify-content: space-between; // Distribuir as colunas ao longo do espaço disponível
+    justify-content: space-between;
   }
 
   .info {
-    max-width: 50%; // Ajustar a largura para metade da página
+    max-width: 50%;
   }
 
   .poster {
-    align-self: flex-start; // Alinhar à direita
+    align-self: flex-start;
   }
 }
