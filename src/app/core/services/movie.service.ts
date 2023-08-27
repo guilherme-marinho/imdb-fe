@@ -12,8 +12,8 @@ export class MovieService {
     this.baseUrl = api_url.base_url;
   }
 
-  getMovieById(id: string) {
-    const url = `${this.baseUrl}/movie/id/${id}`;
+  checkStar(id: string) {
+    const url = `${this.baseUrl}/movie/star/${id}`;
     return this.http.get(url);
   }
 
