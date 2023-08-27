@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+  HostListener,
+} from '@angular/core';
 import { MovieService } from '../core/services/movie.service';
 import { LoadingService } from '../core/services/loading.service';
 
@@ -10,25 +16,25 @@ import { LoadingService } from '../core/services/loading.service';
 export class MovieSearchComponent implements OnInit {
   searchQuery: string = '';
   selectedMovie: any = {};
+  favoriteStatus: boolean | null = null;
+
+  @ViewChild('searchInput', { static: false }) searchInput!: ElementRef;
 
   constructor(
     private movieService: MovieService,
     private loadingService: LoadingService
   ) {}
+
   ngOnInit(): void {}
 
-  searchMovies() {
+  async searchMovies() {
     if (this.searchQuery) {
-      console.log('Search Query:', this.searchQuery);
-      this.loadingService.on();
-
       this.movieService
         .getMovieByTitle(this.searchQuery.replace(/ /g, '+'))
         .subscribe(
-          (data: any) => {
+          async (data: any) => {
             this.selectedMovie = data.data || {};
-            console.log(this.selectedMovie);
-
+            await this.loadFavoriteStatus(this.selectedMovie.imdbID);
             this.loadingService.off();
           },
           (error) => {
@@ -39,16 +45,50 @@ export class MovieSearchComponent implements OnInit {
     }
   }
 
-  toggleFavorite(imdbID: string) {
-    this.movieService.toggleMovie(imdbID, true).subscribe(() => {});
+  async loadFavoriteStatus(imdbID: string) {
+    this.movieService.checkStar(imdbID).subscribe((response: any) => {
+      this.selectedMovie.favorite = response.data === true;
+    });
+  }
+
+  async toggleFavorite(imdbID: string) {
+    this.loadingService.on();
+
+    try {
+      if (this.favoriteStatus === null) {
+        await this.loadFavoriteStatus(imdbID);
+      }
+      this.favoriteStatus = !this.favoriteStatus;
+      await this.movieService
+        .toggleMovie(imdbID, this.favoriteStatus)
+        .toPromise();
+      this.selectedMovie.favorite = this.favoriteStatus;
+      this.loadingService.off();
+    } catch (error) {
+      console.error('Error toggling favorite:', error);
+      this.loadingService.off();
+    }
   }
 
   isFavorite(imdbID: string): boolean {
-    return false;
+    return (
+      this.favoriteStatus === true && this.selectedMovie?.imdbID === imdbID
+    );
   }
 
   resetSearch() {
     this.searchQuery = '';
     this.selectedMovie = {};
+    this.favoriteStatus = null;
+  }
+
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (
+      event.key === 'Enter' &&
+      document.activeElement === this.searchInput.nativeElement
+    ) {
+      this.searchMovies();
+    }
   }
 }

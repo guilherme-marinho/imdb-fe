@@ -4,19 +4,31 @@
   </button>
 
   <div class="movie-details">
-    <h1>{{ selectedMovie?.Title ? selectedMovie?.Title : "Lorem Ipsum" }}</h1>
+    <h1>
+      {{
+        selectedMovie?.Title
+          ? selectedMovie?.Title
+          : "Busque seu filme favorito"
+      }}
+    </h1>
     <p>
       {{
         selectedMovie?.Awards
           ? selectedMovie?.Awards
-          : "Lorem ipsum dolor sit amet..."
+          : "Encontre as informações dele no IMDB"
       }}
     </p>
   </div>
 
   <div class="search-bar">
     <div class="input-group">
-      <input type="text" class="form-control" [(ngModel)]="searchQuery" />
+      <input
+        #searchInput
+        type="text"
+        class="form-control"
+        [(ngModel)]="searchQuery"
+      />
+
       <div class="input-group-append">
         <button class="btn btn-primary" type="button" (click)="searchMovies()">
           Buscar
@@ -28,40 +40,47 @@
     </div>
   </div>
 
-  <div class="movie-info">
-    <div class="row">
-      <div class="col-md-8 info">
-        <h2>
-          {{ selectedMovie?.Title ? selectedMovie?.Title : "Lorem Ipsum" }}
-        </h2>
-        <p>
-          Description:
-          {{ selectedMovie?.Plot ? selectedMovie?.Plot : "Lorem Ipsum" }}
-        </p>
-        <p>
-          Actors: {{ selectedMovie?.Actors ? selectedMovie?.Actors : "N/A" }}
-        </p>
-        <p>
-          Rating:
-          <span class="star-rating">{{ selectedMovie?.imdbRating }}</span>
-        </p>
-        <button
-          class="btn btn-outline-danger btn-favorite"
-          (click)="toggleFavorite(selectedMovie?.imdbID)"
-        >
-          <span class="heart-icon">
-            {{ isFavorite(selectedMovie?.imdbID) ? "❤️" : "♡" }}
-          </span>
-          Favoritar
-        </button>
-      </div>
-      <div class="col-md-4 text-center poster">
-        <img
-          *ngIf="selectedMovie?.Poster"
-          [src]="selectedMovie?.Poster"
-          alt="Movie Poster"
-          class="poster-img"
-        />
+  <div class="container movie-search-container">
+    <div *ngIf="selectedMovie && selectedMovie.Title" class="movie-info">
+      <div class="row">
+        <div class="col-md-8 info">
+          <h2>
+            {{ selectedMovie?.Title }}
+          </h2>
+          <p>
+            Description:
+            {{ selectedMovie?.Plot }}
+          </p>
+          <p>Actors: {{ selectedMovie?.Actors }}</p>
+          <p>
+            Rating:
+            <span class="star-rating">{{ selectedMovie?.imdbRating }}</span>
+          </p>
+          <button
+            class="btn btn-outline-danger btn-favorite"
+            *ngIf="selectedMovie?.imdbID"
+            (click)="toggleFavorite(selectedMovie?.imdbID)"
+          >
+            <span class="heart-icon">
+              {{ selectedMovie?.favorite ? "❤️" : "♡" }}
+            </span>
+            {{
+              selectedMovie?.favorite !== null
+                ? selectedMovie?.favorite
+                  ? "Desfavoritar"
+                  : "Favoritar"
+                : "Carregando..."
+            }}
+          </button>
+        </div>
+        <div class="col-md-4 text-center poster">
+          <img
+            *ngIf="selectedMovie?.Poster"
+            [src]="selectedMovie?.Poster"
+            alt="Movie Poster"
+            class="poster-img"
+          />
+        </div>
       </div>
     </div>
   </div>
