@@ -8,14 +8,14 @@
       {{
         selectedMovie?.Title
           ? selectedMovie?.Title
-          : "Busque seu filme favorito"
+          : "Search for your favorite movie"
       }}
     </h1>
     <p>
       {{
         selectedMovie?.Awards
-          ? selectedMovie?.Awards
-          : "Encontre as informações dele no IMDB"
+          ? "Awards: " + selectedMovie?.Awards
+          : "Find its information on IMDB"
       }}
     </p>
   </div>
@@ -31,10 +31,10 @@
 
       <div class="input-group-append">
         <button class="btn btn-primary" type="button" (click)="searchMovies()">
-          Buscar
+          Search
         </button>
         <button class="btn btn-secondary" type="button" (click)="resetSearch()">
-          Resetar
+          Reset
         </button>
       </div>
     </div>
@@ -67,9 +67,9 @@
             {{
               selectedMovie?.favorite !== null
                 ? selectedMovie?.favorite
-                  ? "Desfavoritar"
-                  : "Favoritar"
-                : "Carregando..."
+                  ? "Favorite"
+                  : "Unfavorite"
+                : "Loading..."
             }}
           </button>
         </div>
