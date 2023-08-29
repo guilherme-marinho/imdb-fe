@@ -1,27 +1,90 @@
-# ImdbFe
+# Movie Finder App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.3.
+## English
 
-## Development server
+The Movie Finder App is an Angular project that allows users to search for movies by title in the IMDb API and favorite their preferred films.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Features
 
-## Code scaffolding
+- Movie search by title.
+- Display of movie details including title, description, actors, and IMDb rating.
+- Option to favorite or unfavorite movies.
+- List of favorited movies for easy access.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Installation
 
-## Build
+Make sure you have the Angular CLI installed globally. If not, you can install it using the following command:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+npm install -g @angular/cli
+```
 
-## Running unit tests
+After cloning or downloading this repository, navigate to the project directory and install the dependencies:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+npm install
+# or
+yarn install
+```
 
-## Running end-to-end tests
+### Running the Project
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+To start the project, use the following command:
 
-## Further help
+```bash
+ng serve
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+This will launch the development server. Open a web browser and go to http://localhost:4200/ to view the application.
+
+### Usage
+
+- On the home page, enter a movie title in the search bar and click "Search."
+- Search results will be displayed below the search bar. Click on a movie to see more details.
+- On the movie details page, you can favorite or unfavorite a movie. Favorited movies will be saved for future reference.
+
+## Portuguese
+
+O Movie Finder App é um projeto Angular que permite aos usuários pesquisar filmes pelo título na API do IMDb e favoritar seus filmes preferidos.
+
+### Funcionalidades
+- Pesquisa de filmes por título.
+- Exibição de detalhes do filme, incluindo título, descrição, atores e avaliação do IMDb.
+- Opção de favoritar ou desfavoritar filmes.
+- Lista de filmes favoritados para fácil acesso.
+
+#### Instalação
+
+Certifique-se de ter o Angular CLI instalado globalmente. Caso não tenha, você pode instalá-lo com o seguinte comando:
+
+```bash
+npm install -g @angular/cli
+```
+
+Após clonar ou fazer o download deste repositório, navegue até o diretório do projeto e instale as dependências:
+
+```bash
+npm install
+# ou
+yarn install
+```
+
+### Executando o Projeto
+
+Para iniciar o projeto, utilize o seguinte comando:
+
+```bash
+ng serve
+```
+
+Isso iniciará o servidor de desenvolvimento. Abra um navegador e acesse http://localhost:4200/ para visualizar o aplicativo.
+
+### Uso
+
+- Na página inicial, digite o título de um filme na barra de pesquisa e clique em "Pesquisar".
+- Os resultados da pesquisa serão exibidos abaixo da barra de pesquisa. Clique em um filme para ver mais detalhes.
+- Na página de detalhes do filme, você pode favoritar ou desfavoritar um filme. Filmes favoritados serão salvos para referência futura.
+
+
+
+
