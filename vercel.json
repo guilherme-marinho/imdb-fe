@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "path/to/your/build/directory", "use": "@vercel/node@14" }
+  ]
+}
