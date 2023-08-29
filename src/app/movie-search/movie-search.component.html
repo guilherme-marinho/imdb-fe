@@ -23,8 +23,8 @@
           [(ngModel)]="searchQuery"
           aria-label="Search"
         />
-        <p class="d-md-none" *ngIf="selectedMovie?.Error">
-          {{ selectedMovie.Error }}
+        <p class="d-md-none text-danger" *ngIf="selectedMovie?.Error">
+          <b>{{ selectedMovie.Error }}</b>
         </p>
       </div>
       <div class="col-6 col-md-2 mb-3 mb-md-0">
@@ -45,8 +45,10 @@
           Reset
         </button>
       </div>
-      <div class="col-12 d-none d-md-block">
-        <p *ngIf="selectedMovie?.Error">{{ selectedMovie.Error }}</p>
+      <div class="col-12 d-none d-md-block text-danger">
+        <p *ngIf="selectedMovie?.Error">
+          <b>{{ selectedMovie.Error }}</b>
+        </p>
       </div>
       <div class="col-12 col-md-4 mt-5 order-md-1">
         <div class="d-flex justify-content-center justify-content-md-end">
