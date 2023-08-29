@@ -1,87 +1,88 @@
-<div class="container movie-search-container">
-  <button class="btn btn-secondary btn-back" routerLink="/">
-    <span class="arrow-icon">&#8592;</span>
-  </button>
-
-  <div class="movie-details">
-    <h1>
-      {{
-        selectedMovie?.Title
-          ? selectedMovie?.Title
-          : "Search for your favorite movie"
-      }}
-    </h1>
-    <p>
-      {{
-        selectedMovie?.Awards
-          ? "Awards: " + selectedMovie?.Awards
-          : "Find its information on IMDB"
-      }}
-    </p>
-  </div>
-
-  <div class="search-bar">
-    <div class="input-group">
-      <input
-        #searchInput
-        type="text"
-        class="form-control"
-        [(ngModel)]="searchQuery"
-      />
-
-      <div class="input-group-append">
-        <button class="btn btn-primary" type="button" (click)="searchMovies()">
+<section class="vh-100">
+  <nav class="text-center bg-primary-subtle py-4 mb-4"></nav>
+  <div class="container movie-search-container">
+    <div class="row">
+      <div class="col-12 text-center mb-3">
+        <h1>{{ selectedMovie?.Title || "Search for your favorite movie" }}</h1>
+      </div>
+      <div class="col-12 text-center mb-3">
+        <p>
+          {{
+            selectedMovie?.Awards
+              ? "Awards: " + selectedMovie?.Awards
+              : "Find its information on IMDB"
+          }}
+        </p>
+      </div>
+      <div class="col-12 col-md-8 mb-3 mb-md-0">
+        <input
+          #searchInput
+          class="form-control"
+          type="search"
+          placeholder="Search"
+          [(ngModel)]="searchQuery"
+          aria-label="Search"
+        />
+        <p class="d-md-none" *ngIf="selectedMovie?.Error">
+          {{ selectedMovie.Error }}
+        </p>
+      </div>
+      <div class="col-6 col-md-2 mb-3 mb-md-0">
+        <button
+          type="button"
+          class="btn btn-primary w-100"
+          (click)="searchMovies()"
+        >
           Search
         </button>
-        <button class="btn btn-secondary" type="button" (click)="resetSearch()">
+      </div>
+      <div class="col-6 col-md-2 mb-3 mb-md-0">
+        <button
+          type="button"
+          class="btn btn-primary w-100"
+          (click)="resetSearch()"
+        >
           Reset
         </button>
       </div>
-    </div>
-  </div>
-
-  <div class="container movie-search-container">
-    <div *ngIf="selectedMovie && selectedMovie.Title" class="movie-info">
-      <div class="row">
-        <div class="col-md-8 info">
-          <h2>
-            {{ selectedMovie?.Title }}
-          </h2>
-          <p>
-            Description:
-            {{ selectedMovie?.Plot }}
-          </p>
-          <p>Actors: {{ selectedMovie?.Actors }}</p>
-          <p>
-            Rating:
-            <span class="star-rating">{{ selectedMovie?.imdbRating }}</span>
-          </p>
-          <button
-            class="btn btn-outline-danger btn-favorite"
-            *ngIf="selectedMovie?.imdbID"
-            (click)="toggleFavorite(selectedMovie?.imdbID)"
-          >
-            <span class="heart-icon">
-              {{ selectedMovie?.favorite ? "❤️" : "♡" }}
-            </span>
-            {{
-              selectedMovie?.favorite !== null
-                ? selectedMovie?.favorite
-                  ? "Favorite"
-                  : "Unfavorite"
-                : "Loading..."
-            }}
-          </button>
+      <div class="col-12 d-none d-md-block">
+        <p *ngIf="selectedMovie?.Error">{{ selectedMovie.Error }}</p>
+      </div>
+      <div class="col-12 col-md-4 mt-5 order-md-1">
+        <div class="d-flex justify-content-center justify-content-md-end">
+          <div>
+            <img
+              *ngIf="selectedMovie?.Poster"
+              [src]="selectedMovie?.Poster"
+              alt="Movie Poster"
+              class="img-fluid"
+            />
+          </div>
         </div>
-        <div class="col-md-4 text-center poster">
-          <img
-            *ngIf="selectedMovie?.Poster"
-            [src]="selectedMovie?.Poster"
-            alt="Movie Poster"
-            class="poster-img"
-          />
-        </div>
+      </div>
+      <div
+        class="col-12 col-md-8 mt-5 order-md-0"
+        *ngIf="selectedMovie && selectedMovie.Title"
+      >
+        <h2>{{ selectedMovie?.Title }}</h2>
+        <p><b>Description: </b>{{ selectedMovie?.Plot }}</p>
+        <p><b>Actors: </b> {{ selectedMovie?.Actors }}</p>
+        <p><b>Review: </b> {{ selectedMovie?.imdbRating }}</p>
+        <button
+          class="btn btn-primary mb-5 mb-md-0"
+          (click)="toggleFavorite(selectedMovie?.imdbID)"
+        >
+          <span>{{ selectedMovie?.favorite ? "❤️" : "♡" }}</span>
+          {{
+            selectedMovie?.favorite !== null
+              ? selectedMovie?.favorite
+                ? "Favorite"
+                : "Unfavorite"
+              : "Loading..."
+          }}
+        </button>
       </div>
     </div>
   </div>
-</div>
+  <footer class="fixed-bottom text-center bg-primary-subtle py-4"></footer>
+</section>

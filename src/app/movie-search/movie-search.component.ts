@@ -86,7 +86,7 @@ export class MovieSearchComponent implements OnInit {
   handleKeyboardEvent(event: KeyboardEvent) {
     if (
       event.key === 'Enter' &&
-      document.activeElement === this.searchInput.nativeElement
+      event.target === this.searchInput.nativeElement
     ) {
       this.searchMovies();
     }

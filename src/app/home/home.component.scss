@@ -17,7 +17,6 @@ body {
 }
 
 .welcome-container {
-  background-color: $background-color;
   height: 100vh;
 }
 
@@ -29,21 +28,19 @@ body {
   min-height: 100%;
   padding: 40px;
   border-radius: 10px;
-  background-color: $background-color;
   transition: box-shadow 0.3s;
 
   .content-box {
+    margin-top: 120px;
     font-family: "Roboto", sans-serif;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     transition: box-shadow 0.3s, background-color 0.3s;
     padding: 20px;
     border-radius: 10px;
-    background-color: $box-background-color;
     text-align: center;
 
     &:hover {
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-      background-color: $highlight-color;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
     }
 
     .imdb-logo {
