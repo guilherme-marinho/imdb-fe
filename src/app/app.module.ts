@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MovieSearchComponent } from './movie-search/movie-search.component';
 import { HomeComponent } from './home/home.component';
+import { HeaderComponent } from './shared/components/header/header.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,7 +17,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, MovieSearchComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    MovieSearchComponent,
+    HeaderComponent,
+    FooterComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
